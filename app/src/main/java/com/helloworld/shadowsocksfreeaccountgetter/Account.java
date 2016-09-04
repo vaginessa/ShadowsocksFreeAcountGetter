@@ -7,27 +7,28 @@ package com.helloworld.shadowsocksfreeaccountgetter;
 public class Account {
     private String name;
     private String server;
+    private String port;
     private String encryption;
     private String password;
-    private String description;
 
-    public Account() {
+    public Account(String name) {
+        this.name = name;
     }
 
     public Account(String description, String encryption, String name, String password, String server) {
-        this.description = description;
+        this.port = description;
         this.encryption = encryption;
         this.name = name;
         this.password = password;
         this.server = server;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPort() {
+        return port;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPort(String port) {
+        this.port = port;
     }
 
     public String getEncryption() {

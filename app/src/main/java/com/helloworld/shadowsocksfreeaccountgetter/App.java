@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 
 /**
  * Created by PinkD on 2016/9/4.
+ * test App
  */
 public class App extends Application {
     @Override
