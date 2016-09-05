@@ -14,8 +14,4 @@ public class App extends Application {
         super.onCreate();
     }
 
-    @Override
-    public Context createPackageContext(String packageName, int flags) throws PackageManager.NameNotFoundException {
-        return super.createPackageContext(packageName, flags);
-    }
 }

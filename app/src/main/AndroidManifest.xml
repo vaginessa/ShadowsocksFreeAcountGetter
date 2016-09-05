@@ -21,7 +21,7 @@
 
         <meta-data
             android:name="xposedminversion"
-            android:value="50" />
+            android:value="54" />
 
         <activity android:name="com.helloworld.shadowsocksfreeaccountgetter.MainActivity">
             <intent-filter>

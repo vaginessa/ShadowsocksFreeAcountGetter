@@ -8,7 +8,7 @@ public class Config {
     public static final String URL = "http://www.ishadowsocks.org/";
     public static final boolean DEBUG = true;
     public static final String PACKAGE_NAME = "com.github.shadowsocks";
-    public static final String CLASS_NAME = "Shadowsocks";
-    public static final String METHOD_NAME = "findViewById";
-
+    public static final String CLASS_NAME = "ShadowsocksApplication";
+    public static final String CREATE_METHOD_NAME = "onCreate";
+    public static final String CONTEXT_METHOD_NAME = "getApplicationContext";
 }
