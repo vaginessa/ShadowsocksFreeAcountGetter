@@ -35,10 +35,6 @@ public class Parse {
     }
 
     public void parse(@NonNull String content) {
-        if (Config.DEBUG) {
-            XposedBridge.log(TAG + content);
-            Log.d(TAG, "parse: " + content);
-        }
         if (accounts == null) {
             accounts = new ArrayList<>();
         } else {
@@ -47,31 +43,41 @@ public class Parse {
         for (int i = 0; i < patterns.length; i++) {
             matchers[i] = patterns[i].matcher(content);
         }
-        for (int i = 0; i < matchers[0].groupCount(); i++) {
-            accounts.add(new Account("vpn" + i));
-        }
+        int max = 0;
         for (int i = 0; i < matchers.length; i++) {
-            if (matchers[i].find()) {
-                for (int j = 0; j < matchers[i].groupCount(); j++) {
-                    switch (i) {
-                        case SERVER:
-                            accounts.get(j).setServer(matchers[i].group(j));
-                            break;
-                        case PORT:
-                            accounts.get(j).setPort(matchers[i].group(j));
-                            break;
-                        case PASS:
-                            accounts.get(j).setPassword(matchers[i].group(j));
-                            break;
-                        case ENCRYPTION:
-                            accounts.get(j).setEncryption(matchers[i].group(j));
-                            break;
-                    }
+            int count = 0;
+            while (matchers[i].find()) {
+                Account account;
+                if (max == 0) {
+                    account = new Account("vpn" + count++);
+                } else {
+                    account = accounts.get(count++);
+                }
+                String data = matchers[i].group().split(":")[1].split("<")[0];
+                if (Config.DEBUG) {
+                    XposedBridge.log(TAG + i + ":" + data);
+                    Log.d(TAG, "parse:" + data);
+                }
+                switch (i) {
+                    case SERVER:
+                        account.setServer(data);
+                        break;
+                    case PORT:
+                        account.setPort(data);
+                        break;
+                    case PASS:
+                        account.setPassword(data);
+                        break;
+                    case ENCRYPTION:
+                        account.setEncryption(data);
+                        break;
+                }
+                if (max == 0) {
+                    accounts.add(account);
                 }
             }
+            max = count;
         }
-
-        //TODO
         callBack.onSuccess(accounts);
     }
 

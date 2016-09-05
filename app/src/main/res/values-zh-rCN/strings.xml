@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ShadowsocksFreeAcountGetter</string>
+    <string name="switcher">打开/关闭</string>
+    <string name="description">这是一个自动从网上获取Shadowsocks帐号的xposed框架模块。</string>
+</resources>

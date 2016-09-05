@@ -62,4 +62,15 @@ public class Account {
     public void setServer(String server) {
         this.server = server;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "encryption='" + encryption + '\'' +
+                ", name='" + name + '\'' +
+                ", server='" + server + '\'' +
+                ", port='" + port + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
